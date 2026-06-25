@@ -10,13 +10,11 @@ FACEBOOK_PAGE_ACCESS_TOKEN = os.environ.get("PAGE_ACCESS_TOKEN")
 VERIFY_TOKEN = os.environ.get("VERIFY_TOKEN", "my_secret_token_123")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
-# মডেলগুলো লিস্ট করার জন্য নিচের কোডটি ব্যবহার করুন:
-for m in genai.list_models():
-    print(m.name)
-
+# ১. প্রথমে কনফিগার করুন
 genai.configure(api_key=GEMINI_API_KEY)
-# মডেলটি এইভাবে কনফিগার করুন:
-model = genai.GenerativeModel("gemini-pro")
+
+# ২. তারপর মডেল সেট করুন (একটি মাত্র মডেল থাকবে)
+model = genai.GenerativeModel("gemini-2.0-flash")
 
 @app.route("/", methods=["GET"])
 def verify_webhook():
