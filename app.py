@@ -10,6 +10,10 @@ FACEBOOK_PAGE_ACCESS_TOKEN = os.environ.get("PAGE_ACCESS_TOKEN")
 VERIFY_TOKEN = os.environ.get("VERIFY_TOKEN", "my_secret_token_123")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
+# মডেলগুলো লিস্ট করার জন্য নিচের কোডটি ব্যবহার করুন:
+for m in genai.list_models():
+    print(m.name)
+
 genai.configure(api_key=GEMINI_API_KEY)
 # মডেলটি এইভাবে কনফিগার করুন:
 model = genai.GenerativeModel("gemini-pro")
