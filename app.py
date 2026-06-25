@@ -14,7 +14,7 @@ GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 genai.configure(api_key=GEMINI_API_KEY)
 
 # ২. তারপর মডেল সেট করুন (একটি মাত্র মডেল থাকবে)
-model = genai.GenerativeModel("gemini-2.0-flash-001")
+model = genai.GenerativeModel("gemini-2.0-flash-lite")
 
 @app.route("/", methods=["GET"])
 def verify_webhook():
