@@ -2,6 +2,7 @@ import os
 from flask import Flask, request
 import google.generativeai as genai
 import requests
+import traceback
 
 app = Flask(__name__)
 
@@ -35,7 +36,9 @@ def webhook_event():
                             prompt = f"You are a customer service AI for infocardbd.com. Reply in short and friendly manner in the customer's language (Bengali/English). Customer asks: {customer_message}"
                             response = model.generate_content(prompt)
                             bot_reply = response.text
-                        except:
+                        except Exception as e:
+                            print("ERROR DETECTED:")
+                            traceback.print_exc() # এটি লগে আসল ভুলটি লিখে দেবে
                             bot_reply = "দুঃখিত, একটু কারিগরি সমস্যা হচ্ছে।"
                         
                         # Send reply
